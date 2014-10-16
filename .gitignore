@@ -2,3 +2,6 @@ target
 .classpath
 .project
 .settings
+#IntelliJIdea
+.idea
+sitemapgen4j.iml

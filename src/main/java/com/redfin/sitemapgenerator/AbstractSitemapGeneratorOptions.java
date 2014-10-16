@@ -5,7 +5,7 @@ import java.net.URL;
 
 // that weird thing with generics is so sub-classed objects will return themselves
 // It makes sense, I swear! http://madbean.com/2004/mb2004-3/
-abstract class AbstractSitemapGeneratorOptions<THIS extends AbstractSitemapGeneratorOptions<THIS>> {
+public abstract class AbstractSitemapGeneratorOptions<THIS extends AbstractSitemapGeneratorOptions<THIS>> {
 	File baseDir;
 	String baseUrl;
 	String fileNamePrefix = "sitemap";

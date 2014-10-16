@@ -8,7 +8,7 @@ import java.util.Date;
 /** Container for optional URL parameters */
 //that weird thing with generics is so sub-classed objects will return themselves
 //It makes sense, I swear! http://madbean.com/2004/mb2004-3/
-abstract class AbstractSitemapUrlOptions<U extends WebSitemapUrl, THIS extends AbstractSitemapUrlOptions<U,THIS>> {
+public abstract class AbstractSitemapUrlOptions<U extends WebSitemapUrl, THIS extends AbstractSitemapUrlOptions<U,THIS>> {
 	Date lastMod;
 	ChangeFreq changeFreq;
 	Double priority;
@@ -24,6 +24,9 @@ abstract class AbstractSitemapUrlOptions<U extends WebSitemapUrl, THIS extends A
 		this.url = url;
 		this.clazz = clazz;
 	}
+
+
+
 	
 	/**
 	 * The date of last modification of the file. Note that this tag is
@@ -72,7 +75,7 @@ abstract class AbstractSitemapUrlOptions<U extends WebSitemapUrl, THIS extends A
 	/**
 	 * <p>The priority of this URL relative to other URLs on your site. Valid
 	 * values range from 0.0 to 1.0. This value does not affect how your
-	 * pages are compared to pages on other sites—it only lets the search
+	 * pages are compared to pages on other sitesï¿½it only lets the search
 	 * engines know which pages you deem most important for the crawlers.</p>
 	 * 
 	 * <p>The default priority of a page is 0.5.</p>

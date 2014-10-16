@@ -3,7 +3,7 @@ package com.redfin.sitemapgenerator;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-abstract class AbstractSitemapUrlRenderer<T extends WebSitemapUrl> implements ISitemapUrlRenderer<T> {
+public abstract class AbstractSitemapUrlRenderer<T extends WebSitemapUrl> implements ISitemapUrlRenderer<T> {
 
 	public void render(WebSitemapUrl url, OutputStreamWriter out, W3CDateFormat dateFormat, String additionalData)
 			throws IOException {

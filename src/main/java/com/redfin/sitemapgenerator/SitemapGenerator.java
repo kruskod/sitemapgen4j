@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
@@ -193,7 +194,7 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 			if (gzip) {
 				FileOutputStream fileStream = new FileOutputStream(outFile);
 				GZIPOutputStream gzipStream = new GZIPOutputStream(fileStream);
-				out = new OutputStreamWriter(gzipStream);
+				out = new OutputStreamWriter(gzipStream, Charset.forName("UTF-8"));
 			} else {
 				out = new FileWriter(outFile);
 			}
