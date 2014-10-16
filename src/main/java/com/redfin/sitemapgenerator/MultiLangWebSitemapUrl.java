@@ -2,10 +2,7 @@ package com.redfin.sitemapgenerator;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Denis Krusko
@@ -22,7 +19,7 @@ public class MultiLangWebSitemapUrl extends WebSitemapUrl {
 
     public MultiLangWebSitemapUrl(AbstractSitemapUrlOptions<?,?> options, Map<Locale,URL> alternatePages) {
         super(options);
-        this.alternatePages = alternatePages;
+        this.alternatePages = new TreeMap<>(alternatePages);
     }
 
     /**
@@ -30,9 +27,8 @@ public class MultiLangWebSitemapUrl extends WebSitemapUrl {
      */
     public MultiLangWebSitemapUrl(Options options) {
         super(options);
-        alternatePages = options.alternatePages;
+        this.alternatePages = options.alternatePages;
     }
-
 
     /** Options to configure web sitemap URLs */
     public static class Options extends AbstractSitemapUrlOptions<MultiLangWebSitemapUrl, Options>{
@@ -48,8 +44,8 @@ public class MultiLangWebSitemapUrl extends WebSitemapUrl {
         }
 
         public Options alternatePages(Map<Locale,URL> alternatePages) {
-            this.alternatePages = alternatePages;
-            return this;
+           this.alternatePages = alternatePages;
+           return this;
         }
     }
 

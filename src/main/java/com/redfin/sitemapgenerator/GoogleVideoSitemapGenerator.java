@@ -3,6 +3,7 @@ package com.redfin.sitemapgenerator;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -63,7 +64,7 @@ public class GoogleVideoSitemapGenerator extends SitemapGenerator<GoogleVideoSit
 			return GoogleVideoSitemapUrl.class;
 		}
 
-		public void render(GoogleVideoSitemapUrl url, OutputStreamWriter out,
+		public void render(GoogleVideoSitemapUrl url, Writer out,
 				W3CDateFormat dateFormat) throws IOException {
 			StringBuilder sb = new StringBuilder();
 			sb.append("    <video:video>\n");

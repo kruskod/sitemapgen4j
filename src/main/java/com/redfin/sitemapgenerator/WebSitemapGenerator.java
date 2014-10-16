@@ -2,7 +2,7 @@ package com.redfin.sitemapgenerator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -64,7 +64,7 @@ public class WebSitemapGenerator extends SitemapGenerator<WebSitemapUrl,WebSitem
 			return WebSitemapUrl.class;
 		}
 		
-		public void render(WebSitemapUrl url, OutputStreamWriter out, W3CDateFormat dateFormat) throws IOException {
+		public void render(WebSitemapUrl url, Writer out, W3CDateFormat dateFormat) throws IOException {
 			super.render(url, out, dateFormat, null);
 		}
 

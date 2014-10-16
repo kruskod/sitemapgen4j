@@ -3,6 +3,7 @@ package com.redfin.sitemapgenerator;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -64,7 +65,7 @@ public class GoogleGeoSitemapGenerator extends SitemapGenerator<GoogleGeoSitemap
 			return GoogleGeoSitemapUrl.class;
 		}
 
-		public void render(GoogleGeoSitemapUrl url, OutputStreamWriter out,
+		public void render(GoogleGeoSitemapUrl url, Writer out,
 				W3CDateFormat dateFormat) throws IOException {
 			StringBuilder sb = new StringBuilder();
 			sb.append("    <geo:geo>\n");

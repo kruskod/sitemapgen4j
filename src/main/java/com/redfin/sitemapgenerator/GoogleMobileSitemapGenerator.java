@@ -2,7 +2,7 @@ package com.redfin.sitemapgenerator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -63,7 +63,7 @@ public class GoogleMobileSitemapGenerator extends SitemapGenerator<GoogleMobileS
 			return GoogleMobileSitemapUrl.class;
 		}
 
-		public void render(GoogleMobileSitemapUrl url, OutputStreamWriter out,
+		public void render(GoogleMobileSitemapUrl url, Writer out,
 				W3CDateFormat dateFormat) throws IOException {
 			String additionalData = "    <mobile:mobile/>\n";
 			super.render(url, out, dateFormat, additionalData);
@@ -73,6 +73,6 @@ public class GoogleMobileSitemapGenerator extends SitemapGenerator<GoogleMobileS
 		public String getXmlNamespaces() {
 			return "xmlns:mobile=\"http://www.google.com/schemas/sitemap-mobile/1.0\"";
 		}
-		
+
 	}
 }

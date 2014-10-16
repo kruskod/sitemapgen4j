@@ -3,6 +3,7 @@ package com.redfin.sitemapgenerator;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -75,7 +76,7 @@ public class GoogleNewsSitemapGenerator extends SitemapGenerator<GoogleNewsSitem
 			return GoogleNewsSitemapUrl.class;
 		}
 
-		public void render(GoogleNewsSitemapUrl url, OutputStreamWriter out,
+		public void render(GoogleNewsSitemapUrl url, Writer out,
 				W3CDateFormat dateFormat) throws IOException {
 			StringBuilder sb = new StringBuilder();
 			sb.append("    <news:news>\n");

@@ -14,6 +14,7 @@ public abstract class AbstractSitemapGeneratorOptions<THIS extends AbstractSitem
 	int maxUrls = SitemapGenerator.MAX_URLS_PER_SITEMAP;
 	boolean autoValidate = false;
 	boolean gzip = false;
+    boolean trim = false;
 	
 	public AbstractSitemapGeneratorOptions(URL baseUrl, File baseDir) {
 		if (baseDir == null) throw new NullPointerException("baseDir may not be null");
@@ -62,6 +63,13 @@ public abstract class AbstractSitemapGeneratorOptions<THIS extends AbstractSitem
 		this.gzip = gzip;
 		return getThis();
 	}
+
+    /** Gzip the sitemaps after they are written to disk */
+    public THIS trim(boolean trim) {
+        this.trim = trim;
+        return getThis();
+    }
+
 	@SuppressWarnings("unchecked")
 	THIS getThis() {
 		return (THIS)this;

@@ -1,10 +1,6 @@
 package com.redfin.sitemapgenerator;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -12,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
+import com.redfin.sitemapgenerator.util.SpaceTrimWriter;
 import org.xml.sax.SAXException;
 
 abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGenerator<U,THIS>> {
@@ -28,6 +25,7 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 	private final int maxUrls;
 	private final boolean autoValidate;
 	private final boolean gzip;
+    private final boolean trim;
 	private final ISitemapUrlRenderer<U> renderer;
 	private int mapCount = 0;
 	private boolean finished = false;
@@ -45,6 +43,7 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 		maxUrls = options.maxUrls;
 		autoValidate = options.autoValidate;
 		gzip = options.gzip;
+        trim = options.trim;
 		this.renderer = renderer;
 		fileNameSuffix = gzip ? ".xml.gz" : ".xml";
 	}
@@ -190,7 +189,7 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 		File outFile = new File(baseDir, fileNamePrefix+fileNameSuffix);
 		outFiles.add(outFile);
 		try {
-			OutputStreamWriter out;
+			Writer out;
 			if (gzip) {
 				FileOutputStream fileStream = new FileOutputStream(outFile);
 				GZIPOutputStream gzipStream = new GZIPOutputStream(fileStream);
@@ -198,7 +197,9 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 			} else {
 				out = new FileWriter(outFile);
 			}
-			
+            if (trim) {
+                out = new SpaceTrimWriter(out);
+            }
 			writeSiteMap(out);
 			if (autoValidate) SitemapValidator.validateWebSitemap(outFile);
 		} catch (IOException e) {
@@ -208,7 +209,7 @@ abstract class SitemapGenerator<U extends ISitemapUrl, THIS extends SitemapGener
 		}
 	}
 	
-	private void writeSiteMap(OutputStreamWriter out) throws IOException {
+	private void writeSiteMap(Writer out) throws IOException {
 		out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"); 
 		out.write("<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" ");
 		

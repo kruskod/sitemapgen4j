@@ -2,10 +2,11 @@ package com.redfin.sitemapgenerator;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 public abstract class AbstractSitemapUrlRenderer<T extends WebSitemapUrl> implements ISitemapUrlRenderer<T> {
 
-	public void render(WebSitemapUrl url, OutputStreamWriter out, W3CDateFormat dateFormat, String additionalData)
+	public void render(WebSitemapUrl url, Writer out, W3CDateFormat dateFormat, String additionalData)
 			throws IOException {
 		out.write("  <url>\n");
 		out.write("    <loc>");

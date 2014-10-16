@@ -3,6 +3,7 @@ package com.redfin.sitemapgenerator;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -64,7 +65,7 @@ public class GoogleCodeSitemapGenerator extends SitemapGenerator<GoogleCodeSitem
 			return GoogleCodeSitemapUrl.class;
 		}
 
-		public void render(GoogleCodeSitemapUrl url, OutputStreamWriter out,
+		public void render(GoogleCodeSitemapUrl url, Writer out,
 				W3CDateFormat dateFormat) throws IOException {
 			StringBuilder sb = new StringBuilder();
 			sb.append("    <codesearch:codesearch>\n");

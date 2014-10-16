@@ -2,7 +2,7 @@ package com.redfin.sitemapgenerator;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
@@ -103,7 +103,7 @@ public class MultiLangWebSitemapGenerator extends SitemapGenerator<MultiLangWebS
             return MultiLangWebSitemapUrl.class;
         }
 
-        public void render(MultiLangWebSitemapUrl url, OutputStreamWriter out,
+        public void render(MultiLangWebSitemapUrl url, Writer out,
                            W3CDateFormat dateFormat) throws IOException {
             StringBuilder sb = new StringBuilder();
             Locale urlLocale;
