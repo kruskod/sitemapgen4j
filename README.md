@@ -154,5 +154,5 @@ Configure MultiLangWebSitemapGenerator like this:
                 .build();
         mainSiteMap.addUrl(url);
         mainSiteMap.write();
-```
+        ```
 
