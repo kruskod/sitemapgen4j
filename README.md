@@ -117,6 +117,38 @@ You can also use the SitemapValidator directly to manage sitemaps.  It has two m
 
 Google can understand a wide variety of custom sitemap formats that they made up, including a Mobile sitemaps, Geo sitemaps, Code sitemaps (for Google Code search), Google News sitemaps, and Video sitemaps.  SitemapGen4j can generate any/all of these different types of sitemaps.
 
-To generate a special type of sitemap, just use GoogleMobileSitemapGenerator, GoogleGeoSitemapGenerator, GoogleCodeSitemapGenerator, GoogleCodeSitemapGenerator, GoogleNewsSitemapGenerator, or GoogleVideoSitemapGenerator instead of WebSitemapGenerator.
+To generate a special type of sitemap, just use GoogleMobileSitemapGenerator, GoogleGeoSitemapGenerator, GoogleCodeSitemapGenerator, GoogleCodeSitemapGenerator, GoogleNewsSitemapGenerator, GoogleVideoSitemapGenerator or MultiLangWebSitemapGenerator instead of WebSitemapGenerator.
 
 You can't mix-and-match regular URLs with Google-specific sitemaps, so you'll also have to use a GoogleMobileSitemapUrl, GoogleGeoSitemapUrl, GoogleCodeSitemapUrl, GoogleNewsSitemapUrl, or GoogleVideoSitemapUrl instead of a WebSitemapUrl.  Each of them has unique configurable options not available to regular web URLs.  
+
+<h3>Alternate language pages sitemaps</h3>
+Add xhtml:link tag to Your URL, for example:
+```<url>
+    <loc>http://www.example.com/english/</loc>
+    <xhtml:link
+                 rel="alternate"
+                 hreflang="de"
+                 href="http://www.example.com/deutsch/"
+                 />
+    <xhtml:link
+                 rel="alternate"
+                 hreflang="de-ch"
+                 href="http://www.example.com/schweiz-deutsch/"
+                 />
+    <xhtml:link
+                 rel="alternate"
+                 hreflang="en"
+                 href="http://www.example.com/english/"
+                 />
+  </url>```
+
+```MultiLangWebSitemapGenerator mainSiteMap = MultiLangWebSitemapGenerator.builder("http://www.example.com", dir);
+        Map<Locale, URL> alternatePages = new HashMap<>();
+        alternatePages.put(Locale.ENGLISH, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/en/foo")));
+        alternatePages.put(Locale.GERMANY, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/de/foo")));
+        MultiLangWebSitemapUrl url = new MultiLangWebSitemapUrl.Options("http://www.example.com/foo")
+                .alternatePages(alternatePages)
+                .build();
+        mainSiteMap.addUrl(url);
+        mainSiteMap.write();```
+
