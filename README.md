@@ -145,14 +145,15 @@ To add xhtml:link tag to sitemap URL
 
 Configure MultiLangWebSitemapGenerator like this:
 
-```MultiLangWebSitemapGenerator mainSiteMap = MultiLangWebSitemapGenerator.builder("http://www.example.com", dir);
-        Map<Locale, URL> alternatePages = new HashMap<>();
-        alternatePages.put(Locale.ENGLISH, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/en/foo")));
-        alternatePages.put(Locale.GERMANY, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/de/foo")));
-        MultiLangWebSitemapUrl url = new MultiLangWebSitemapUrl.Options("http://www.example.com/foo")
-                .alternatePages(alternatePages)
-                .build();
-        mainSiteMap.addUrl(url);
-        mainSiteMap.write();
-        ```
+```java
+MultiLangWebSitemapGenerator mainSiteMap = MultiLangWebSitemapGenerator.builder("http://www.example.com", dir);
+Map<Locale, URL> alternatePages = new HashMap<>();
+alternatePages.put(Locale.ENGLISH, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/en/foo")));
+alternatePages.put(Locale.GERMANY, new URL(SitemapGeneratorOptions.escapeHtml("http://www.example.com/de/foo")));
+MultiLangWebSitemapUrl url = new MultiLangWebSitemapUrl.Options("http://www.example.com/foo")
+    .alternatePages(alternatePages)
+    .build();
+mainSiteMap.addUrl(url);
+mainSiteMap.write();
+```
 
