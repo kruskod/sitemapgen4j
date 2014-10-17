@@ -122,7 +122,7 @@ To generate a special type of sitemap, just use GoogleMobileSitemapGenerator, Go
 You can't mix-and-match regular URLs with Google-specific sitemaps, so you'll also have to use a GoogleMobileSitemapUrl, GoogleGeoSitemapUrl, GoogleCodeSitemapUrl, GoogleNewsSitemapUrl, or GoogleVideoSitemapUrl instead of a WebSitemapUrl.  Each of them has unique configurable options not available to regular web URLs.  
 
 <h3>Alternate language pages sitemaps</h3>
-Add xhtml:link tag to Your URL, for example:
+To add xhtml:link tag to sitemap URL
 ```<url>
     <loc>http://www.example.com/english/</loc>
     <xhtml:link
@@ -141,6 +141,8 @@ Add xhtml:link tag to Your URL, for example:
                  href="http://www.example.com/english/"
                  />
   </url>```
+
+Configure MultiLangWebSitemapGenerator like this:
 
 ```MultiLangWebSitemapGenerator mainSiteMap = MultiLangWebSitemapGenerator.builder("http://www.example.com", dir);
         Map<Locale, URL> alternatePages = new HashMap<>();
