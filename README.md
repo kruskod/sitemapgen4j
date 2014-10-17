@@ -140,7 +140,8 @@ To add xhtml:link tag to sitemap URL
                  hreflang="en"
                  href="http://www.example.com/english/"
                  />
-  </url>```
+  </url>
+```
 
 Configure MultiLangWebSitemapGenerator like this:
 
@@ -152,5 +153,6 @@ Configure MultiLangWebSitemapGenerator like this:
                 .alternatePages(alternatePages)
                 .build();
         mainSiteMap.addUrl(url);
-        mainSiteMap.write();```
+        mainSiteMap.write();
+```
 
